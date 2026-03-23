@@ -1,70 +1,811 @@
 /* ========================================
-   HEADER MEJORADO (GLASS NAVBAR PRO)
+   FONDO CON IMAGEN Y GLASSMORPHISM
+   ======================================== */
+
+:root {
+    --glass-bg: rgba(74, 140, 74, 0.08);
+    --glass-border: rgba(122, 179, 122, 0.25);
+    --glass-blur: blur(12px);
+    --dark-bg: rgba(13, 30, 20, 0.85);
+    --text-primary: #ffffff;
+    --text-secondary: #c8e6c8;
+    --green-dark: #0d3d1f;
+    --green-medium: #2d5c2d;
+    --green-bright: #4a8c4a;
+    --green-light: #7ab37a;
+    --green-accent: #3d7f5f;
+}
+
+/* Fondo General con Imagen y Glassmorphism  aquia ya esta la img */
+body.glassmorphism-bg {
+    background: 
+        url('../images/frieren.jpeg') center/cover fixed,
+        linear-gradient(135deg, 
+            rgba(13, 30, 20, 0.88) 0%,
+            rgba(45, 92, 45, 0.88) 50%,
+            rgba(13, 40, 25, 0.88) 100%);
+    background-attachment: fixed;
+    background-blend-mode: overlay;
+    color: var(--text-primary);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    backdrop-filter: blur(2px);
+}
+
+/* Efecto de fondo dinámico con blur verde oscuro */
+body.glassmorphism-bg::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(74, 140, 74, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(122, 179, 122, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 40% 10%, rgba(106, 176, 74, 0.18) 0%, transparent 40%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* ========================================
+   GLASSMORPHISM BASE CON TONOS VERDES
+   ======================================== */
+
+.glass-card {
+    background: rgba(74, 140, 74, 0.12);
+    border-radius: 20px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(122, 179, 122, 0.28);
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 8px 32px rgba(13, 30, 20, 0.4),
+        inset 0 0 20px rgba(122, 179, 122, 0.08),
+        inset 0 0 40px rgba(74, 140, 74, 0.05);
+}
+
+.glass-card:hover {
+    background: rgba(74, 140, 74, 0.16);
+    border-color: rgba(122, 179, 122, 0.35);
+    box-shadow: 
+        0 12px 40px rgba(13, 30, 20, 0.5),
+        inset 0 0 25px rgba(122, 179, 122, 0.12),
+        inset 0 0 50px rgba(74, 140, 74, 0.08);
+}
+
+/* ========================================
+   NAVBAR Y FOOTER CON TONOS VERDES
    ======================================== */
 
 .glass-navbar {
-    background: linear-gradient(135deg, 
-        rgba(13, 30, 20, 0.75),
-        rgba(45, 92, 45, 0.55));
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-
-    border-bottom: 1px solid rgba(122, 179, 122, 0.25);
-    padding: 14px 25px;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    box-shadow: 
-        0 8px 25px rgba(13, 30, 20, 0.5),
-        inset 0 0 20px rgba(74, 140, 74, 0.08);
-
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    background: rgba(13, 30, 20, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(122, 179, 122, 0.2);
+    padding: 15px 20px;
+    box-shadow: 0 8px 32px rgba(13, 30, 20, 0.4);
 }
 
-/* Logo / título */
 .glass-navbar .navbar-brand {
-    font-size: 1.4rem;
-    font-weight: 700;
-
+    font-size: 1.3rem;
+    text-transform: uppercase;
     letter-spacing: 1px;
-
-    background: linear-gradient(135deg, #7ab37a, #4a8c4a);
+    background: linear-gradient(135deg, #6ab04a 0%, #4a8c4a 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-
-    transition: all 0.3s ease;
+    background-clip: text;
 }
 
-/* Hover del logo */
-.glass-navbar .navbar-brand:hover {
-    transform: scale(1.05);
-    text-shadow: 0 0 10px rgba(122, 179, 122, 0.5);
-}
-
-/* Texto secundario */
 .glass-navbar .text-secondary {
-    color: rgba(200, 230, 200, 0.85) !important;
-    font-size: 0.8rem;
+    color: rgba(200, 230, 200, 0.9) !important;
+}
+
+.glass-footer {
+    background: rgba(13, 30, 20, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(122, 179, 122, 0.2);
+    color: var(--text-secondary);
+    box-shadow: 0 -8px 32px rgba(13, 30, 20, 0.4);
+}
+
+.glass-footer .text-white {
+    color: var(--text-primary) !important;
+}
+
+.glass-footer .text-secondary {
+    color: rgba(200, 230, 200, 0.8) !important;
+}
+
+.glass-footer .fw-bold {
+    background: linear-gradient(135deg, #6ab04a 0%, #4a8c4a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ========================================
+   PANEL DE CONTROL CON TONOS VERDES
+   ======================================== */
+
+.dark-panel {
+    background: rgba(13, 30, 20, 0.75);
+    border: 1px solid rgba(122, 179, 122, 0.2);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 20px;
+    box-shadow: 
+        0 8px 32px rgba(13, 30, 20, 0.45),
+        inset 0 0 20px rgba(74, 140, 74, 0.08),
+        inset 0 0 60px rgba(45, 92, 45, 0.06);
+}
+
+.dark-panel h4 {
+    color: var(--text-primary) !important;
+    font-weight: 700;
     letter-spacing: 0.5px;
 }
 
-/* Efecto glow inferior */
-.glass-navbar::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 10%;
-    width: 80%;
-    height: 2px;
+.dark-panel h5 {
+    color: var(--text-primary) !important;
+}
 
-    background: linear-gradient(
-        to right,
-        transparent,
-        rgba(122, 179, 122, 0.6),
-        transparent
-    );
+.dark-panel h6 {
+    color: var(--text-primary) !important;
+}
+
+/* ========================================
+   FORMULARIOS Y INPUTS CON TONOS VERDES
+   ======================================== */
+
+.form-label {
+    color: rgba(200, 230, 200, 0.95);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-control,
+.form-select {
+    background: rgba(13, 40, 20, 0.85);
+    border: 1px solid rgba(122, 179, 122, 0.2);
+    color: var(--text-primary);
+    border-radius: 12px;
+    height: 42px;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.form-control::placeholder,
+.form-select::placeholder {
+    color: rgba(200, 230, 200, 0.5);
+}
+
+.form-control:focus,
+.form-select:focus {
+    background: rgba(13, 50, 25, 0.95);
+    color: var(--text-primary);
+    border-color: rgba(106, 176, 74, 0.7);
+    box-shadow: 
+        0 0 12px rgba(106, 176, 74, 0.5),
+        inset 0 0 10px rgba(106, 176, 74, 0.12);
+}
+
+.form-select option {
+    background-color: #0d3d1f;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* ========================================
+   BOTONES CON TONOS VERDES
+   ======================================== */
+
+.btn-dark-custom {
+    background: linear-gradient(135deg, #2d5c2d 0%, #1a411a 100%);
+    border: 1px solid rgba(106, 176, 74, 0.4);
+    color: var(--text-primary);
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 4px 15px rgba(74, 140, 74, 0.25),
+        inset 0 0 10px rgba(106, 176, 74, 0.08);
+}
+
+.btn-dark-custom:hover {
+    background: linear-gradient(135deg, #3a7a3a 0%, #2d5c2d 100%);
+    border-color: rgba(106, 176, 74, 0.8);
+    box-shadow: 
+        0 8px 25px rgba(74, 140, 74, 0.45),
+        inset 0 0 15px rgba(106, 176, 74, 0.18);
+    transform: translateY(-2px);
+    color: var(--text-primary);
+}
+
+.btn-dark-custom:active {
+    transform: translateY(0);
+}
+
+/* ========================================
+   CANVAS Y CONTENEDOR CON TONOS VERDES
+   ======================================== */
+
+.canvas-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    background: rgba(13, 30, 20, 0.6);
+    border-radius: 20px;
+    border: 1px solid rgba(122, 179, 122, 0.2);
+    backdrop-filter: blur(16px);
+    box-shadow: 
+        0 8px 32px rgba(13, 30, 20, 0.45),
+        inset 0 0 20px rgba(74, 140, 74, 0.06),
+        inset 0 0 60px rgba(45, 92, 45, 0.08);
+}
+
+.glass-canvas {
+    border-radius: 15px;
+    background: linear-gradient(135deg, 
+        rgba(13, 40, 20, 0.7) 0%,
+        rgba(45, 92, 45, 0.7) 100%);
+    display: block;
+    margin: auto;
+    border: 1px solid rgba(122, 179, 122, 0.15);
+    box-shadow: 
+        0 8px 32px rgba(74, 140, 74, 0.2),
+        inset 0 0 30px rgba(106, 176, 74, 0.08);
+    transition: all 0.3s ease;
+}
+
+.glass-canvas:hover {
+    box-shadow: 
+        0 12px 40px rgba(74, 140, 74, 0.3),
+        inset 0 0 40px rgba(106, 176, 74, 0.12);
+}
+
+/* ========================================
+   BADGES Y ESTILOS ESPECIALES
+   ======================================== */
+
+.badge {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    padding: 6px 12px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.bg-opacity-75 {
+    opacity: 0.8 !important;
+}
+
+/* ========================================
+   RESPONSIVE ADJUSTMENTS
+   ======================================== */
+
+/* Extra Large (Monitores 2K y superiores) */
+@media (min-width: 1920px) {
+    .container {
+        max-width: 1400px;
+    }
+    
+    .glass-card {
+        border-radius: 25px;
+        padding: 20px;
+    }
+    
+    .dark-panel {
+        padding: 30px;
+    }
+    
+    .canvas-container {
+        min-height: 550px;
+        padding: 30px;
+    }
+    
+    .glass-navbar {
+        padding: 20px 40px;
+    }
+    
+    .glass-navbar .navbar-brand {
+        font-size: 1.5rem;
+    }
+    
+    .form-control,
+    .form-select {
+        height: 50px;
+        font-size: 1rem;
+    }
+    
+    .form-label {
+        font-size: 0.95rem;
+    }
+    
+    .btn-dark-custom {
+        padding: 15px 30px;
+        font-size: 1rem;
+    }
+    
+    h4 {
+        font-size: 1.75rem;
+    }
+    
+    h5 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Large devices (Laptops de 1440px hasta 1919px) */
+@media (min-width: 1440px) and (max-width: 1919px) {
+    .container {
+        max-width: 90%;
+    }
+    
+    .glass-card {
+        border-radius: 22px;
+        padding: 18px;
+    }
+    
+    .dark-panel {
+        padding: 25px;
+    }
+    
+    .canvas-container {
+        min-height: 480px;
+        padding: 25px;
+    }
+    
+    .glass-navbar .navbar-brand {
+        font-size: 1.35rem;
+    }
+    
+    .form-control,
+    .form-select {
+        height: 45px;
+        font-size: 0.95rem;
+    }
+    
+    h4 {
+        font-size: 1.6rem;
+    }
+    
+    h5 {
+        font-size: 1.35rem;
+    }
+}
+
+/* Medium-Large devices (Laptops normales 1024px - 1439px) */
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .container {
+        max-width: 95%;
+    }
+    
+    .glass-card {
+        border-radius: 18px;
+        padding: 15px;
+    }
+    
+    .dark-panel {
+        padding: 20px;
+        margin-bottom: 25px;
+    }
+    
+    .canvas-container {
+        min-height: 400px;
+        padding: 20px;
+    }
+    
+    .glass-navbar .navbar-brand {
+        font-size: 1.2rem;
+    }
+    
+    .form-control,
+    .form-select {
+        height: 42px;
+        font-size: 0.9rem;
+    }
+    
+    .form-label {
+        font-size: 0.8rem;
+    }
+    
+    .btn-dark-custom {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    h4 {
+        font-size: 1.4rem;
+    }
+    
+    h5 {
+        font-size: 1.2rem;
+    }
+    
+    .glass-footer {
+        padding: 20px 0;
+    }
+}
+
+/* Tablets y dispositivos medianos (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .container {
+        max-width: 100%;
+        padding: 0 15px;
+    }
+    
+    .glass-card {
+        border-radius: 16px;
+        padding: 12px;
+    }
+    
+    .dark-panel {
+        padding: 16px;
+        margin-bottom: 20px;
+    }
+    
+    .canvas-container {
+        min-height: 350px;
+        padding: 15px;
+    }
+    
+    .glass-navbar {
+        padding: 12px 15px;
+    }
+    
+    .glass-navbar .navbar-brand {
+        font-size: 1.1rem;
+    }
+    
+    .glass-navbar .text-secondary {
+        font-size: 0.75rem;
+    }
+    
+    .form-control,
+    .form-select {
+        height: 38px;
+        font-size: 0.85rem;
+    }
+    
+    .form-label {
+        font-size: 0.75rem;
+        margin-bottom: 4px;
+    }
+    
+    .btn-dark-custom {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+    
+    h4 {
+        font-size: 1.2rem;
+    }
+    
+    h5 {
+        font-size: 1.1rem;
+    }
+    
+    .glass-footer .row {
+        margin-bottom: 12px;
+    }
+    
+    .glass-footer .small {
+        font-size: 0.8rem;
+    }
+}
+
+/* Dispositivos pequeños/phones (480px - 767px) */
+@media (max-width: 767px) {
+    body {
+        font-size: 14px;
+    }
+    
+    .container {
+        max-width: 100%;
+        padding: 0 12px;
+    }
+    
+    .glass-card {
+        border-radius: 14px;
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+    
+    .dark-panel {
+        padding: 12px;
+        margin-bottom: 15px;
+    }
+    
+    .dark-panel .text-center {
+        margin-bottom: 15px;
+    }
+    
+    .canvas-container {
+        min-height: 300px;
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+    
+    .glass-navbar {
+        padding: 10px 12px;
+    }
+    
+    .glass-navbar .navbar-brand {
+        font-size: 1rem;
+        letter-spacing: 0px;
+    }
+    
+    .glass-navbar .text-secondary {
+        font-size: 0.7rem;
+        display: none;
+    }
+    
+    .navbar-toggler {
+        padding: 5px 10px;
+    }
+    
+    .form-label {
+        font-size: 0.7rem;
+        margin-bottom: 3px;
+        text-transform: none;
+        letter-spacing: 0;
+    }
+    
+    .form-control,
+    .form-select {
+        height: 36px;
+        font-size: 0.8rem;
+        border-radius: 8px;
+    }
+    
+    .btn-dark-custom {
+        padding: 8px 12px;
+        font-size: 0.75rem;
+        letter-spacing: 0;
+    }
+    
+    h4 {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+    }
+    
+    h5 {
+        font-size: 1rem;
+    }
+    
+    h6 {
+        font-size: 0.95rem;
+    }
+    
+    .row.align-items-end.g-3 {
+        gap: 12px !important;
+    }
+    
+    .col-lg-2,
+    .col-lg-4,
+    .col-md-4,
+    .col-md-12 {
+        width: 100%;
+    }
+    
+    .glass-footer {
+        padding: 15px 0;
+    }
+    
+    .glass-footer .row {
+        margin-bottom: 10px;
+    }
+    
+    .glass-footer .small {
+        font-size: 0.75rem;
+    }
+    
+    .glass-footer .text-white {
+        font-size: 0.85rem;
+    }
+    
+    .badge {
+        font-size: 0.65rem;
+        padding: 4px 8px;
+        margin-bottom: 5px;
+    }
+    
+    .py-4 {
+        padding-top: 15px !important;
+        padding-bottom: 15px !important;
+    }
+    
+    .p-4 {
+        padding: 12px !important;
+    }
+    
+    .mt-4 {
+        margin-top: 15px !important;
+    }
+    
+    .mt-5 {
+        margin-top: 20px !important;
+    }
+}
+
+/* Ultra-small devices (menos de 480px) */
+@media (max-width: 479px) {
+    .container {
+        padding: 0 10px;
+    }
+    
+    .glass-card {
+        border-radius: 12px;
+        padding: 8px;
+        margin-bottom: 10px;
+    }
+    
+    .dark-panel {
+        padding: 10px;
+    }
+    
+    .canvas-container {
+        min-height: 250px;
+        padding: 8px;
+    }
+    
+    .glass-navbar .navbar-brand {
+        font-size: 0.95rem;
+    }
+    
+    .glass-navbar .navbar-brand i {
+        display: none;
+    }
+    
+    .form-label {
+        font-size: 0.65rem;
+    }
+    
+    .form-label i {
+        display: none;
+    }
+    
+    .form-control,
+    .form-select {
+        height: 34px;
+        font-size: 0.75rem;
+    }
+    
+    .btn-dark-custom {
+        padding: 6px 10px;
+        font-size: 0.7rem;
+    }
+    
+    .btn-dark-custom i {
+        display: none;
+    }
+    
+    h4 {
+        font-size: 1rem;
+    }
+    
+    h5 {
+        font-size: 0.95rem;
+    }
+    
+    .text-secondary {
+        font-size: 0.7rem;
+    }
+}
+
+/* ========================================
+   ANIMACIONES Y EFECTOS
+   ======================================== */
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 
+            0 0 10px rgba(0, 212, 255, 0.3),
+            inset 0 0 10px rgba(0, 212, 255, 0.05);
+    }
+    50% {
+        box-shadow: 
+            0 0 20px rgba(0, 212, 255, 0.5),
+            inset 0 0 15px rgba(0, 212, 255, 0.1);
+    }
+}
+
+.glass-card.animate-glow {
+    animation: glow 3s ease-in-out infinite;
+}
+
+/* ========================================
+   OPTIMIZACIONES ADICIONALES
+   ======================================== */
+
+/* Asegurar que todo sea visible en móviles */
+body {
+    overflow-x: hidden;
+}
+
+/* Evitar zoom en inputs en iOS */
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+    font-size: 16px !important;
+}
+
+/* Optimizar espacios en móviles */
+@supports (padding: max(0px)) {
+    body {
+        padding-left: max(12px, env(safe-area-inset-left));
+        padding-right: max(12px, env(safe-area-inset-right));
+    }
+}
+
+/* Mejorar legibilidad de texto */
+p {
+    line-height: 1.6;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Asegurar que canvas se muestre correctamente */
+canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ========================================
+   EFECTOS NEON PARA TEXTOS
+   ======================================== */
+
+/* Efecto neon para títulos principales */
+.neon-title {
+    color: #ffffff;
+    text-shadow: 
+        0 0 5px #4a8c4a,
+        0 0 10px #4a8c4a,
+        0 0 15px #4a8c4a,
+        0 0 20px #4a8c4a,
+        0 0 35px #4a8c4a;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Efecto neon sutil para subtítulos */
+.neon-subtitle {
+    color: #c8e6c8;
+    text-shadow: 
+        0 0 3px #7ab37a,
+        0 0 6px #7ab37a,
+        0 0 9px #7ab37a;
+    font-weight: 600;
+}
+
+/* Mejorar legibilidad de textos descriptivos con glow verde sutil */
+.text-description {
+    color: rgba(200, 230, 200, 0.95) !important;
+    text-shadow: 
+        0 0 2px rgba(74, 140, 74, 0.6),
+        0 0 4px rgba(74, 140, 74, 0.4);
+    line-height: 1.7;
+    font-weight: 500;
+}
+
+/* Efecto neon para badges */
+.neon-badge {
+    color: #ffffff;
+    text-shadow: 
+        0 0 3px #4a8c4a,
+        0 0 6px #4a8c4a;
+    font-weight: 600;
 }
